@@ -6,4 +6,55 @@ package kass.concurrente.modelo.producto;
  */
 public class Producto {
     
+    // Nombre del Producto
+    protected String nombre;
+    // Precio del Producto
+    protected Double precio;
+
+    /**
+     * Constructor vacio para un Producto.
+     */
+    public Producto(){ }
+
+    /**
+     * Constructor que recibe nombre y precio.
+     * @param nombre el nombre del Producto. 
+     * @param precio el precio del Producto. 
+     */
+    public Producto(String nombre, Double precio){
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
+    /**
+     * Regresa el nombre del Producto.
+     * @return el nombre del Producto.
+     */
+    public String getNombre(){
+        return this.nombre;
+    }
+
+    /**
+     * Define el nuevo nombre del Producto.
+     * @param nombre el nuevo nombre del Producto.
+     */
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+
+    /**
+     * Regresa el precio del Producto.
+     * @return el precio del Producto.
+     */
+    public Double getPrecio(){
+        return this.precio;
+    }
+
+    /**
+     * Define el nuevo precio del Producto.
+     * @param precio el nuevo precio del Producto.
+     */
+    public void setPrecio(Double precio){
+        this.precio = precio;
+    }
 }
