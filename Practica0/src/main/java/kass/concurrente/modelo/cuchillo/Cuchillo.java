@@ -11,5 +11,5 @@ public interface Cuchillo {
      * Metodo que hace que cocine mas rapido al usar el cuchillo
      * @return El tiempo que reduce al usar dicho item
      */
-    public int corta();
+    public Integer corta();
 }

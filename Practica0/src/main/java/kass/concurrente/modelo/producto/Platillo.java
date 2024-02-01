@@ -9,13 +9,13 @@ import java.util.ArrayList;
  */
 public class Platillo {
 
-    // Nombre del platillo
+    // Nombre del Platillo
     private String nombre;
-    // Tiempo del coccion del platillo
+    // Tiempo del coccion del Platillo
     private Integer tiempo;
-    // Precio del platillo
+    // Precio del Platillo
     private Double precio;
-    // Lista de productos del platillo
+    // Lista de productos del Platillo
     private List<Producto> productos;
 
     /**
@@ -38,11 +38,11 @@ public class Platillo {
 
     /**
      * Constructor que recibe una lista de productos para el platillo, el precio,
-     * el tiempo de coccion y el nombre del platillo. 
-     * @param productos lista de productos del platillo.
-     * @param precio el precio del platillo.
-     * @param tiempo el tiempo del platillo.
-     * @param nombre el nombre del platillo.
+     * el tiempo de coccion y el nombre del Platillo. 
+     * @param productos lista de productos del Platillo.
+     * @param precio el precio del Platillo.
+     * @param tiempo el tiempo del Platillo.
+     * @param nombre el nombre del Platillo.
      */
     public Platillo(List<Producto> productos, Double precio, Integer tiempo, String nombre){
         this.productos = productos;
@@ -52,64 +52,64 @@ public class Platillo {
     }
 
     /**
-     * Regresa el nombre del platillo.
-     * @return el nombre del platillo.
+     * Regresa el nombre del Platillo.
+     * @return el nombre del Platillo.
      */
     public String getNombre(){
         return this.nombre;
     }
 
     /**
-     * Define el nuevo nombre del platillo.
-     * @param nombre el nuevo nombre del platillo.
+     * Define el nuevo nombre del Platillo.
+     * @param nombre el nuevo nombre del Platillo.
      */
     public void setNombre(String nombre ){
         this.nombre = nombre;
     }
 
     /**
-     * Regresa el precio del platillo.
-     * @return el precio del platillo.
+     * Regresa el precio del Platillo.
+     * @return el precio del Platillo.
      */
     public Double getPrecio(){
         return this.precio;
     }
 
     /**
-     * Define el nuevo precio del platillo.
-     * @param precio el nuevo precio del platillo.
+     * Define el nuevo precio del Platillo.
+     * @param precio el nuevo precio del Platillo.
      */
     public void setPrecio(Double precio ){
         this.precio = precio;
     }
 
     /**
-     * Regresa el tiempo del platillo.
-     * @return el tiempo del platillo.
+     * Regresa el tiempo de coccion del Platillo.
+     * @return el tiempo de coccion del Platillo.
      */
-    public Integer getTiempo(){
+    public Integer getTiempoCoccion(){
         return this.tiempo;
     }
 
     /**
-     * Define el nuevo tiempo del platillo.
-     * @param tiempo el nuevo tiempo del platillo.
+     * Define el nuevo tiempo de coccion del Platillo.
+     * @param tiempo el nuevo tiempo de coccion del Platillo.
      */
-    public void setTiempo(Integer tiempo ){
+    public void setTiempoCoccion(Integer tiempo ){
         this.tiempo = tiempo;
     }
 
     /**
-     * Regresa la lista de productos requeridos para el platillo.
-     * @return la lista de productos requeridos para el platillo.
+     * Regresa la lista de productos requeridos para el Platillo.
+     * @return la lista de productos requeridos para el Platillo.
      */
     public List<Producto> getProductosRequeridos(){
         return this.productos;
     }
 
     /**
-     * Define la nueva lista de productos para el platillo.
-     * @param productos la nueva lista de productos para el platillo.
+     * Define la nueva lista de productos para el Platillo.
+     * @param productos la nueva lista de productos para el Platillo.
      */
     public void setProductosRequeridos(List<Producto> productos){
         this.productos = productos;
@@ -129,9 +129,5 @@ public class Platillo {
             precioProductos += producto.getPrecio();
         }
         return precioProductos;
-    }
-    
-    public Integer getTiempoCoccion(){
-        return 0;
     }
 }

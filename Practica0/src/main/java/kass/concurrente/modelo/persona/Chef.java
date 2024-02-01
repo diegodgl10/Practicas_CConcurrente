@@ -4,8 +4,6 @@ import kass.concurrente.modelo.cuchillo.Cuchillo;
 
 public class Chef extends Persona{
 
-    // Algo del chef
-    Integer algo;
     // Cuchillo del chef
     Cuchillo cuchillo;
 
@@ -15,14 +13,29 @@ public class Chef extends Persona{
     public Chef(){ }
 
     /**
-     * Constructor que recibe nombre, algo y el cuchillo del Chef
+     * Constructor que recibe nombre, edad y el cuchillo del Chef
      * @param nombre el nombre del Chef.
-     * @param algo el algo del Chef.
+     * @param edad el edad del Chef.
      * @param cuchillo el cuchillo del Chef.
      */
-    public Chef(String nombre, Integer algo, Cuchillo cuchillo){
-        this.nombre = nombre;
-        this.algo = algo;
+    public Chef(String nombre, Integer edad, Cuchillo cuchillo){
+        super(nombre, edad);
+        this.cuchillo = cuchillo;
+    }
+
+    /**
+     * Regresa el cuchillo del Chef.
+     * @return el cuchillo del Chef.
+     */
+    public Cuchillo getCuchillo(){
+        return this.cuchillo;
+    }
+
+    /**
+     * Define el nuevo cuchillo del Chef.
+     * @param cuchillo el nuevo cuchillo del Chef.
+     */
+    public void setCuchillo(Cuchillo cuchillo){
         this.cuchillo = cuchillo;
     }
     
