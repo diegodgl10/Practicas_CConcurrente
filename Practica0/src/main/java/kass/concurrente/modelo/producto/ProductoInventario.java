@@ -36,6 +36,17 @@ public class ProductoInventario extends Producto{
     }
 
     /**
+     * Constructor que recibe un objeto Producto y la cantidad de dicho producto.
+     * @param producto el producto del que se tomaran el nombre y precio
+     * para el ProductoInventario. 
+     * @param cantidad el cantidad del ProductoInventario.
+     */
+    public ProductoInventario(Producto producto, Integer cantidad){
+        super(producto.nombre, producto.precio);
+        this.cantidad = cantidad;
+    }
+
+    /**
      * Regresa el cantidad del ProductoInventario.
      * @return el cantidad del ProductoInventario.
      */

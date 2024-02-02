@@ -6,6 +6,9 @@ package kass.concurrente.modelo.cuchillo;
  */
 public class CuchilloPiedra implements Cuchillo{
 
+    // Nivel de corte (segundos que ahorra al utilizar el uchillo de piedra).
+    private final Integer corte = 1;
+
     /**
      * Regresa el valor de tiempo que reduce el Chef
      * al cocinar usando un cuchillo de piedra.
@@ -14,7 +17,7 @@ public class CuchilloPiedra implements Cuchillo{
      */
     @Override
     public Integer corta() {
-        return 2;
+        return corte;
     }
     
 }

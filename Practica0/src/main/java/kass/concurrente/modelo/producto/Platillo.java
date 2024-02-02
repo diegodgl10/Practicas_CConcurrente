@@ -10,13 +10,13 @@ import java.util.ArrayList;
 public class Platillo {
 
     // Nombre del Platillo
-    private String nombre;
+    protected String nombre;
     // Tiempo del coccion del Platillo
-    private Integer tiempo;
+    protected Integer tiempo;
     // Precio del Platillo
-    private Double precio;
+    protected Double precio;
     // Lista de productos del Platillo
-    private List<Producto> productos;
+    protected List<Producto> productos;
 
     /**
      * Constructor vacio del Platillo.
