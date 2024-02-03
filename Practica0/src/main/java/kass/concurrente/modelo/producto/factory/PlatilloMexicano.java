@@ -8,6 +8,7 @@ import kass.concurrente.modelo.producto.Producto;
 /**
  * Clase que representa un platillo mexicano.
  * @author Zamora Cruz Diego Arturo
+ * @version 1.0
  */
 public class PlatilloMexicano extends Platillo {
 

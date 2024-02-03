@@ -7,6 +7,7 @@ import kass.concurrente.modelo.producto.Platillo;
 /**
  * Clase que modela a un Cliente.
  * @author Zamora Cruz Diego Arturo.
+ * @version 1.0
  */
 public class Cliente extends Persona {
 

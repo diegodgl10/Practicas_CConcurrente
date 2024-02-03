@@ -3,6 +3,7 @@ package kass.concurrente.modelo.cuchillo;
 /**
  * Clase que implementa la interfaz Cuchillo para representar un cuchillo de piedra.
  * @author Zamora Cruz Diego Arturo
+ * @version 1.0
  */
 public class CuchilloPiedra implements Cuchillo{
 

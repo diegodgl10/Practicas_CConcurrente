@@ -10,6 +10,10 @@ import kass.concurrente.modelo.producto.Platillo;
 import kass.concurrente.modelo.producto.Producto;
 import kass.concurrente.modelo.producto.ProductoInventario;
 
+/**
+ * Clase para representar a un chef
+ * @author Kassandra Mirael
+ */
 public class Chef extends Persona{
 
     // Cuchillo del chef
@@ -82,41 +86,6 @@ public class Chef extends Persona{
     }
 
     /**
-     * Surte el inventario del chef con el producto faltante.
-     * Solo puede ir por un tipo de producto a la vez.
-     */
-    private void recogeProducto(Producto producto){
-        try{
-            reporte("El cocinero fue por 2 unidades de " + producto.getNombre());
-            Thread.sleep(1000);
-        } catch (InterruptedException e){
-            reporte("El cocinero se tropezo y murio, F");
-        }
-        reporte("El cocinero ya regreso con 2 unidades de " + producto.getNombre());
-        ProductoInventario pInv = this.productos.get(producto.getNombre());
-        pInv.setCantidad(2);
-        this.productos.put(nombre, pInv);
-        reporte("Le tomo 1 seg ir por " +producto.getNombre()+ "\n");
-    }
-
-    /* Verifica si el chef tiene todo para comenzar a cocinar,
-    si no es asi, va por ingredientes. */
-    private void verificaInventario(Platillo platillo){
-        List<Producto> porSurtir = new ArrayList<Producto>();
-        Enumeration<String> llaves = this.productos.keys();
-        while(llaves.hasMoreElements()){
-            ProductoInventario pInv = this.productos.get(llaves.nextElement());
-            if (pInv.getCantidad() <= 0 &&
-                platillo.getProductosRequeridos().contains(pInv)){
-                porSurtir.add(pInv);
-            }
-        }
-        for (Producto pFaltante : porSurtir) {
-            recogeProducto(pFaltante);
-        }
-    }
-
-    /**
      * Metoro para que el chef cocine el platillo indicado.
      * @param platillo el platillo que debe cocinar.
      */
@@ -156,11 +125,6 @@ public class Chef extends Persona{
         reporte("El cocinero vendio " +producto.getNombre()+ "\n");
     }
 
-    /* Reporta al usurio el estado del chef. */
-    private void reporte(String msj){
-        System.out.println(msj);
-    }
-    
     /**
      * Atiende a un cliente.
      * @param cliente el cliente al que se va a antender.
@@ -197,5 +161,45 @@ public class Chef extends Persona{
             msj += "   "+ pInv.getNombre() +": "+ pInv.getCantidad() +"\n";
         }
         return msj;
+    }
+
+    /**
+     * Surte el inventario del chef con el producto faltante.
+     * Solo puede ir por un tipo de producto a la vez.
+     */
+    private void recogeProducto(Producto producto){
+        try{
+            reporte("El cocinero fue por 2 unidades de " + producto.getNombre());
+            Thread.sleep(1000);
+        } catch (InterruptedException e){
+            reporte("El cocinero se tropezo y murio, F");
+        }
+        reporte("El cocinero ya regreso con 2 unidades de " + producto.getNombre());
+        ProductoInventario pInv = this.productos.get(producto.getNombre());
+        pInv.setCantidad(2);
+        this.productos.put(nombre, pInv);
+        reporte("Le tomo 1 seg ir por " +producto.getNombre()+ "\n");
+    }
+
+    /* Verifica si el chef tiene todo para comenzar a cocinar,
+    si no es asi, va por ingredientes. */
+    private void verificaInventario(Platillo platillo){
+        List<Producto> porSurtir = new ArrayList<Producto>();
+        Enumeration<String> llaves = this.productos.keys();
+        while(llaves.hasMoreElements()){
+            ProductoInventario pInv = this.productos.get(llaves.nextElement());
+            if (pInv.getCantidad() <= 0 &&
+                platillo.getProductosRequeridos().contains(pInv)){
+                porSurtir.add(pInv);
+            }
+        }
+        for (Producto pFaltante : porSurtir) {
+            recogeProducto(pFaltante);
+        }
+    }
+
+    /* Reporta al usurio el estado del chef. */
+    private void reporte(String msj){
+        System.out.println(msj);
     }
 }

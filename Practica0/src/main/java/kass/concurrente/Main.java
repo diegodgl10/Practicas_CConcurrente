@@ -23,13 +23,17 @@ import kass.concurrente.modelo.producto.factory.PlatilloEconomicoFactory;
  */
 public class Main {
 
+    // El chef que cocinara
     static Chef chef;
+    // Lista de tosos los productos que se pueden necesitar
     static List<Producto> productos;
+    // Lista de clientes
     static List<Cliente> clientes;
+    // Objeto random
     static Random random = new Random();
 
     /* Genera un chef con un tipo de cuchillo aleatorio. */
-    public static Chef generarChef(){
+    static Chef generarChef(){
         Cuchillo cuchillo;
         int i = random.nextInt(3);
         switch (i) {
@@ -46,7 +50,7 @@ public class Main {
     }
 
     /* Generar lista de todos los productos disponibles. */
-    public static List<Producto> generarProductos(){
+    static List<Producto> generarProductos(){
         productos = new ArrayList<Producto>();
         productos.add(new Producto("Huevo", 4.0));
         productos.add(new Producto("Tocino", 7.0));
@@ -65,7 +69,8 @@ public class Main {
         return productos;
     }
 
-    public static List<Cliente> generarClientela(){
+    /* Genera una lista de clientes. */
+    static List<Cliente> generarClientela(){
         clientes = new ArrayList<Cliente>();
         PlatilloEconomicoFactory platilloEconomico = new PlatilloEconomicoFactory();
         PlatilloCostosoFactory platilloCostoso = new PlatilloCostosoFactory();
@@ -90,7 +95,7 @@ public class Main {
     }
 
     /* Inicia el servicio al cliente */
-    public static void iniciarServicio(){
+    static void iniciarServicio(){
         for (Cliente cliente : clientes) {
             chef.atenderCliente(cliente);
         }

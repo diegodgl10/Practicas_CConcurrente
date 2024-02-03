@@ -10,6 +10,7 @@ import kass.concurrente.modelo.producto.Producto;
 /**
  * Clase para construir platillos economicos
  * @author Zamora Cruz Diego Arturo.
+ * @version 1.0
  */
 public class PlatilloEconomicoFactory implements PlatilloFactory {
 
