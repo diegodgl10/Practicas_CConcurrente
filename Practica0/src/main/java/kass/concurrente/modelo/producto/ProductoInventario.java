@@ -1,5 +1,7 @@
 package kass.concurrente.modelo.producto;
 
+import java.util.Objects;
+
 /**
  * Clase que modela un producto de un inventario
  * @author Kassandra Mirael
@@ -60,5 +62,32 @@ public class ProductoInventario extends Producto{
      */
     public void setCantidad(Integer cantidad){
         this.cantidad = cantidad;
+    }
+
+        /**
+     * Regresa True si el objeto es igual al objeto que mando a llamar al metodo,
+     * False en otro caso.
+     * @return True si el objeto es igual al objeto que mando a llamar al metodo,
+     * False en otro caso.
+     */
+    @Override
+    public boolean equals(Object object){
+        if (object == null){
+            return false;
+        }
+        if (!(object instanceof ProductoInventario)){
+            return false;
+        }
+        ProductoInventario producto = (ProductoInventario) object;
+        return producto.nombre.equals(this.nombre);
+    }
+
+    /**
+     * Calcula el código hash para esta instancia de ProductoInventario.
+     * @return Código hash calculado basado en los atributos nombre.
+     */
+    @Override
+    public int hashCode(){
+        return Objects.hash(this.nombre);
     }
 }

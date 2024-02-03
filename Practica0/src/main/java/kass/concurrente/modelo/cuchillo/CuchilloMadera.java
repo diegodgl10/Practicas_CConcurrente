@@ -8,7 +8,7 @@ package kass.concurrente.modelo.cuchillo;
 public class CuchilloMadera implements Cuchillo{
 
     // Nivel de corte (segundos que ahorra al utilizar el uchillo de madera).
-    private final Integer corte = 0;
+    private Integer corte = 0;
 
     /**
      * Regresa el valor de tiempo que reduce el Chef

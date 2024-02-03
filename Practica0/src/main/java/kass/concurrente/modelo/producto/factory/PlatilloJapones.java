@@ -14,7 +14,7 @@ public class PlatilloJapones extends Platillo {
 
     // Al precio del platillo se le aumenta
     // un porcentaje del precio por consumir comida extranjera.
-    private final Double impuesto = 30.0;
+    private Double impuesto = 30.0;
 
     /**
      * Constructor que recibe una lista de productos para el platillo, el precio,

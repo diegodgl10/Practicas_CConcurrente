@@ -2,8 +2,6 @@ package kass.concurrente.modelo.persona;
 
 import java.util.List;
 
-import kass.concurrente.modelo.producto.Platillo;
-
 /**
  * Clase que modela a un Cliente.
  * @author Zamora Cruz Diego Arturo.

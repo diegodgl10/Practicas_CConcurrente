@@ -3,6 +3,7 @@ package kass.concurrente;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Logger;
 
 import kass.concurrente.modelo.cuchillo.Cuchillo;
 import kass.concurrente.modelo.cuchillo.CuchilloHierro;
@@ -31,6 +32,9 @@ public class Main {
     static List<Cliente> clientes;
     // Objeto random
     static Random random = new Random();
+    // Logger
+    static final Logger logger = Logger.getLogger(Main.class.getName());
+
 
     /* Genera un chef con un tipo de cuchillo aleatorio. */
     static Chef generarChef(){
@@ -51,7 +55,7 @@ public class Main {
 
     /* Generar lista de todos los productos disponibles. */
     static List<Producto> generarProductos(){
-        productos = new ArrayList<Producto>();
+        productos = new ArrayList<>();
         productos.add(new Producto("Huevo", 4.0));
         productos.add(new Producto("Tocino", 7.0));
         productos.add(new Producto("Mayonesa", 5.0));
@@ -71,7 +75,7 @@ public class Main {
 
     /* Genera una lista de clientes. */
     static List<Cliente> generarClientela(){
-        clientes = new ArrayList<Cliente>();
+        clientes = new ArrayList<>();
         PlatilloEconomicoFactory platilloEconomico = new PlatilloEconomicoFactory();
         PlatilloCostosoFactory platilloCostoso = new PlatilloCostosoFactory();
         String nombre;
@@ -80,7 +84,7 @@ public class Main {
         for (int i = 0; i < 15; i++){
             nombre = "Cliente-" +(i+1);
             edad = random.nextInt(20) + 15;
-            orden = new ArrayList<Object>();
+            orden = new ArrayList<>();
             if (i < 10){
                 orden.add(platilloEconomico.creaProducto());
                 orden.add(platilloEconomico.creaProducto());
@@ -105,13 +109,18 @@ public class Main {
         chef = generarChef();
         productos = generarProductos();
         chef.setProductos(productos);
+        String msj = "";
         
-        System.out.println(chef.toString());
+        msj = chef.toString();
+        System.out.println(msj);
+        //logger.info(msj);
         
         clientes = generarClientela();
         
         iniciarServicio();
         
-        System.out.println(chef.toString());
+        msj = chef.toString();
+        System.out.println(msj);
+        //logger.info(msj);
     }
 }

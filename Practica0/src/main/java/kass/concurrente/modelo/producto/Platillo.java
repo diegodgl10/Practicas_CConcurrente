@@ -22,7 +22,7 @@ public class Platillo {
      * Constructor vacio del Platillo.
      */
     public Platillo(){
-        this.productos = new ArrayList<Producto>();
+        this.productos = new ArrayList<>();
     }
 
     /**
@@ -33,7 +33,7 @@ public class Platillo {
     public Platillo(String nombre, Integer tiempo){
         this.nombre = nombre;
         this.tiempo = tiempo;
-        this.productos = new ArrayList<Producto>();
+        this.productos = new ArrayList<>();
     }
 
     /**

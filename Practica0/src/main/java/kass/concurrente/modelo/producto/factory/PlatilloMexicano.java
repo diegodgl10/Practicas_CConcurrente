@@ -14,7 +14,7 @@ public class PlatilloMexicano extends Platillo {
 
     // Al precio del platillo se le descuenta
     // un porcentaje del precio por consumir comida nacional.
-    private final Double apollo = 15.0;
+    private Double apollo = 15.0;
 
     /**
      * Constructor que recibe una lista de productos para el platillo, el precio,

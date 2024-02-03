@@ -1,5 +1,7 @@
 package kass.concurrente.modelo.producto;
 
+import java.util.Objects;
+
 /**
  * Clase que modela un producto
  * @author Kassandra Mirael
@@ -73,9 +75,15 @@ public class Producto {
             return false;
         }
         Producto producto = (Producto) object;
-        if (producto.nombre.equals(this.nombre)){
-            return true;
-        }
-        return false;
+        return producto.nombre.equals(this.nombre);
+    }
+
+    /**
+     * Calcula el código hash para esta instancia de Producto.
+     * @return Código hash calculado basado en los atributos nombre.
+     */
+    @Override
+    public int hashCode(){
+        return Objects.hash(this.nombre);
     }
 }

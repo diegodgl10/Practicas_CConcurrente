@@ -38,28 +38,28 @@ public class PlatilloCostosoFactory implements PlatilloFactory {
 
     /* Crea platillos costosos. */
     public void listarPlatillos() {
-        List<Producto> prod1 = new ArrayList<Producto>();
+        List<Producto> prod1 = new ArrayList<>();
         prod1.add(new Producto("Pescado", 10.0));
         prod1.add(new Producto("Arroz", 2.0));
         prod1.add(new Producto("Azucar", 4.0));
         PlatilloJapones platillo1;
         platillo1 = new PlatilloJapones(prod1, 18.0, 4, "Kaiseki-Ryori");
 
-        List<Producto> prod2 = new ArrayList<Producto>();
+        List<Producto> prod2 = new ArrayList<>();
         prod2.add(new Producto("Cebolla", 6.0));
         prod2.add(new Producto("Soja", 4.0));
         prod2.add(new Producto("Sake", 9.0));
         PlatilloJapones platillo2;
         platillo2 = new PlatilloJapones(prod2, 16.0, 4, "Fugu");
 
-        List<Producto> prod3 = new ArrayList<Producto>();
+        List<Producto> prod3 = new ArrayList<>();
         prod3.add(new Producto("Tortilla", 2.0));
         prod3.add(new Producto("Chile", 4.0));
         prod3.add(new Producto("Pollo", 6.0));
         PlatilloMexicano platillo3;
         platillo3 = new PlatilloMexicano(prod3, 22.0, 4, "Pozole");
 
-        List<Producto> prod4 = new ArrayList<Producto>();
+        List<Producto> prod4 = new ArrayList<>();
         prod4.add(new Producto("Tortilla", 2.0));
         prod4.add(new Producto("Cebolla", 6.0));
         prod4.add(new Producto("Pollo", 6.0));
