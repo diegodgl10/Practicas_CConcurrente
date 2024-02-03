@@ -57,4 +57,25 @@ public class Producto {
     public void setPrecio(Double precio){
         this.precio = precio;
     }
+
+    /**
+     * Regresa True si el objeto es igual al objeto que mando a llamar al metodo,
+     * False en otro caso.
+     * @return True si el objeto es igual al objeto que mando a llamar al metodo,
+     * False en otro caso.
+     */
+    @Override
+    public boolean equals(Object object){
+        if (object == null){
+            return false;
+        }
+        if (!(object instanceof Producto)){
+            return false;
+        }
+        Producto producto = (Producto) object;
+        if (producto.nombre.equals(this.nombre)){
+            return true;
+        }
+        return false;
+    }
 }

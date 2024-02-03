@@ -79,25 +79,24 @@ public class Chef extends Persona{
         for (Producto p : productos) {
             this.productos.put(p.getNombre(), new ProductoInventario(p, 2));
         }
-        //reporte("El chef de hoy es " +this.nombre+ "\n");
-        //reporte("El chef se ha surtido con ingredientes para empezar a cocinar");
-        reporte(resumen());
     }
 
     /**
      * Surte el inventario del chef con el producto faltante.
      * Solo puede ir por un tipo de producto a la vez.
      */
-    private void recogeProductos(Producto producto){
+    private void recogeProducto(Producto producto){
         try{
             reporte("El cocinero fue por 2 unidades de " + producto.getNombre());
             Thread.sleep(1000);
         } catch (InterruptedException e){
             reporte("El cocinero se tropezo y murio, F");
         }
-        this.productos.put(nombre, new ProductoInventario(producto, 2));
         reporte("El cocinero ya regreso con 2 unidades de " + producto.getNombre());
-        reporte("Le tomo " + " 2 seg ir por " +producto.getNombre()+ "\n");
+        ProductoInventario pInv = this.productos.get(producto.getNombre());
+        pInv.setCantidad(2);
+        this.productos.put(nombre, pInv);
+        reporte("Le tomo 1 seg ir por " +producto.getNombre()+ "\n");
     }
 
     /* Verifica si el chef tiene todo para comenzar a cocinar,
@@ -113,7 +112,7 @@ public class Chef extends Persona{
             }
         }
         for (Producto pFaltante : porSurtir) {
-            recogeProductos(pFaltante);
+            recogeProducto(pFaltante);
         }
     }
 
@@ -129,12 +128,13 @@ public class Chef extends Persona{
             reporte("El cocinero comenzo a preparar " + platillo.getNombre());
             Thread.sleep(tPreparacion * 1000);
         } catch (InterruptedException e){
-            reporte("El cocinero se corto y y murio, F");
+            reporte("El cocinero se corto y murio, F");
         }
         for (Producto pRequerido : platillo.getProductosRequeridos()) {
             ProductoInventario p = this.productos.get(pRequerido.getNombre());
             p.setCantidad(p.getCantidad()-1);
             this.productos.put(p.getNombre(), p);
+            this.ganancias += p.getPrecio();
         }
         this.ganancias += platillo.getPrecio();
         reporte("Le tomo " +tPreparacion+ " seg prepararlo");
@@ -145,9 +145,9 @@ public class Chef extends Persona{
      * Venta de un producto
      * @param producto el producto que se vendera.
      */
-    public void venderProducto(Producto producto){
-        if (this.productos.get(producto.getNombre()).getCantidad() == 0){
-            recogeProductos(producto);
+    public void vender(Producto producto){
+        if (this.productos.get(producto.getNombre()).getCantidad() <= 0){
+            recogeProducto(producto);
         }
         ProductoInventario p = this.productos.get(producto.getNombre());
         p.setCantidad(p.getCantidad()-1);
@@ -175,21 +175,26 @@ public class Chef extends Persona{
                 cocinar(platillo);
             } else{
                 Producto producto = (Producto) object;
-                venderProducto(producto);
+                vender(producto);
             }
         }
     }
 
-    public String resumen(){
+    /**
+     * Regresa una representacion en cadena del status actual del Chef.
+     * @return una representacion en cadena del status actual del Chef.
+     */
+    @Override
+    public String toString(){
         String msj = "";
         msj += "Chef: " +this.nombre +"\n";
-        msj += "Ganancias: " +this.ganancias +"\n";
+        msj += String.format("Ganancias: %.3f\n", this.ganancias);
         msj += "Cuchillo ahorra: " +this.cuchillo.corta()+ " seg\n";
         msj += "Inventario:" +"\n";
         Enumeration<String> llaves = this.productos.keys();
         while(llaves.hasMoreElements()){
             ProductoInventario pInv = this.productos.get(llaves.nextElement());
-            msj += pInv.getNombre() +" - "+ pInv.getCantidad() +"\n";
+            msj += "   "+ pInv.getNombre() +": "+ pInv.getCantidad() +"\n";
         }
         return msj;
     }

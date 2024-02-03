@@ -40,7 +40,7 @@ public class PlatilloCostosoFactory implements PlatilloFactory {
         List<Producto> prod1 = new ArrayList<Producto>();
         prod1.add(new Producto("Pescado", 10.0));
         prod1.add(new Producto("Arroz", 2.0));
-        prod1.add(new Producto("Azucar", 5.0));
+        prod1.add(new Producto("Azucar", 4.0));
         PlatilloJapones platillo1;
         platillo1 = new PlatilloJapones(prod1, 18.0, 4, "Kaiseki-Ryori");
 
@@ -60,8 +60,8 @@ public class PlatilloCostosoFactory implements PlatilloFactory {
 
         List<Producto> prod4 = new ArrayList<Producto>();
         prod4.add(new Producto("Tortilla", 2.0));
-        prod4.add(new Producto("Cebolla", 4.0));
-        prod4.add(new Producto("Pollo", 5.0));
+        prod4.add(new Producto("Cebolla", 6.0));
+        prod4.add(new Producto("Pollo", 6.0));
         PlatilloMexicano platillo4;
         platillo4 = new PlatilloMexicano(prod4, 19.0, 4, "Mole");
 
