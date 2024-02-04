@@ -43,4 +43,4 @@ build/
 *.drawio.dtmp
 
 ### Reporte ###
-/Reporte/
+/Reporte/*
