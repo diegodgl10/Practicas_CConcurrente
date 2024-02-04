@@ -41,3 +41,6 @@ build/
 ### Drawio ###
 *.drawio.bkp
 *.drawio.dtmp
+
+### Reporte ###
+/Reporte/
