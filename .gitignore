@@ -37,3 +37,7 @@ build/
 *.class
 .metadata/
 .mvn/
+
+### Drawio ###
+*.drawio.bkp
+*.drawio.dtmp
