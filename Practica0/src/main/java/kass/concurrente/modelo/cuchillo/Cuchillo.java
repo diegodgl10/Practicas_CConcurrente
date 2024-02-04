@@ -12,4 +12,10 @@ public interface Cuchillo {
      * @return El tiempo que reduce al usar dicho item
      */
     public Integer corta();
+
+    /**
+     * Regresa el material del que esta formado.
+     * @return el material del que esta formado.
+     */
+    public String material();
 }

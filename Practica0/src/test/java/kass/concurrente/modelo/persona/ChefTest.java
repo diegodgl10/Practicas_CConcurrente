@@ -14,7 +14,8 @@ class ChefTest {
     @BeforeEach
     void setUp(){
         //generar cu, es interfaz, si no no funcionara
-        c = new Chef("Nombre",10,cu);
+        // c = new Chef("Nombre",10,cu); // linea reemplazada por la de abajo
+        c = Chef.instancia("Nombre",10,cu);
     }
 
     @Test

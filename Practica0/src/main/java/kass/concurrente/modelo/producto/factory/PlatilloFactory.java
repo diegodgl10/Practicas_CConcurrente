@@ -13,5 +13,5 @@ public interface PlatilloFactory {
      * Regresa un platillo.
      * @return un platillo.
      */
-    public Platillo creaProducto();
+    public Platillo creaPlatillo();
 }

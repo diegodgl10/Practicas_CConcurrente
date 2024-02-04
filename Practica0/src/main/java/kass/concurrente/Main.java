@@ -37,7 +37,7 @@ public class Main {
 
 
     /* Genera un chef con un tipo de cuchillo aleatorio. */
-    static Chef generarChef(){
+    static void generarChef(){
         Cuchillo cuchillo;
         int i = random.nextInt(3);
         switch (i) {
@@ -50,11 +50,11 @@ public class Main {
             default:
                 cuchillo = new CuchilloHierro();
         }
-        return new Chef("Paco", 34, cuchillo);
+        chef = Chef.instancia("Paco", 34, cuchillo);
     }
 
     /* Generar lista de todos los productos disponibles. */
-    static List<Producto> generarProductos(){
+    static void generarProductos(){
         productos = new ArrayList<>();
         productos.add(new Producto("Huevo", 4.0));
         productos.add(new Producto("Tocino", 7.0));
@@ -70,11 +70,10 @@ public class Main {
         productos.add(new Producto("Azucar", 5.0));
         productos.add(new Producto("Cebolla", 6.0));
         productos.add(new Producto("Soja", 4.0));
-        return productos;
     }
 
     /* Genera una lista de clientes. */
-    static List<Cliente> generarClientela(){
+    static void generarClientela(){
         clientes = new ArrayList<>();
         PlatilloEconomicoFactory platilloEconomico = new PlatilloEconomicoFactory();
         PlatilloCostosoFactory platilloCostoso = new PlatilloCostosoFactory();
@@ -86,16 +85,15 @@ public class Main {
             edad = random.nextInt(20) + 15;
             orden = new ArrayList<>();
             if (i < 10){
-                orden.add(platilloEconomico.creaProducto());
-                orden.add(platilloEconomico.creaProducto());
-                orden.add(platilloCostoso.creaProducto());
+                orden.add(platilloEconomico.creaPlatillo());
+                orden.add(platilloEconomico.creaPlatillo());
+                orden.add(platilloCostoso.creaPlatillo());
             } else{
                 orden.add(productos.get(random.nextInt(productos.size())));
                 orden.add(productos.get(random.nextInt(productos.size())));
             }
             clientes.add(new Cliente(nombre, edad, orden));
         }
-        return clientes;
     }
 
     /* Inicia el servicio al cliente */
@@ -106,15 +104,15 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        chef = generarChef();
-        productos = generarProductos();
+        generarChef();
+        generarProductos();
+        generarClientela();
+        
         chef.setProductos(productos);
         String msj = "";
         
         msj = chef.toString();
         logger.info(msj);
-        
-        clientes = generarClientela();
         
         iniciarServicio();
         

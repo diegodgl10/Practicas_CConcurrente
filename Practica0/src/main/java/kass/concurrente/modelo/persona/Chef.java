@@ -3,7 +3,6 @@ package kass.concurrente.modelo.persona;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import kass.concurrente.modelo.cuchillo.Cuchillo;
 import kass.concurrente.modelo.producto.Platillo;
@@ -16,30 +15,44 @@ import kass.concurrente.modelo.producto.ProductoInventario;
  */
 public class Chef extends Persona{
 
+    // Instancia unica del chef
+    private static Chef instanciaChef;
     // Cuchillo del chef
     private Cuchillo cuchillo;
     // Ganancias del dia
     private Double ganancias = 0.0;
     // Inventario de Productos que tiene a la mano el Chef.
     private HashMap<String, ProductoInventario> productos;
-    // Logger
-    private Logger logger = Logger.getLogger(Chef.class.getName());
 
-    /**
+    /*
      * Constructor vacio de Chef.
      */
-    public Chef(){ }
+    private Chef(){ }
 
-    /**
+    /*
      * Constructor que recibe nombre, edad y el cuchillo del Chef
-     * @param nombre el nombre del Chef.
-     * @param edad el edad del Chef.
-     * @param cuchillo el cuchillo del Chef.
+     * nombre, el nombre del Chef.
+     * edad, el edad del Chef.
+     * cuchillo, el cuchillo del Chef.
      */
-    public Chef(String nombre, Integer edad, Cuchillo cuchillo){
+    private Chef(String nombre, Integer edad, Cuchillo cuchillo){
         super(nombre, edad);
         this.cuchillo = cuchillo;
         this.productos = new HashMap<>();
+    }
+
+    /**
+     * Regresa la instancia del Chef.
+     * @param nombre el nombre del Chef.
+     * @param edad el edad del Chef.
+     * @param cuchillo el cuchillo del Chef.
+     * @return la instancia del Chef.
+     */
+    public static Chef instancia(String nombre, Integer edad, Cuchillo cuchillo){
+        if (instanciaChef == null){
+            instanciaChef = new Chef(nombre, edad, cuchillo);
+        }
+        return instanciaChef;
     }
 
     /**
@@ -108,7 +121,7 @@ public class Chef extends Persona{
             this.ganancias += pRequerido.getPrecio();
         }
         this.ganancias += platillo.getPrecio();
-        reporte("Le tomo " +tPreparacion+ " seg prepararlo");
+        reporte("Le tomo " +tPreparacion+ " SEG prepararlo");
         reporte("El cocinero termino de preparar " +platillo.getNombre()+ "\n");
     }
 
@@ -153,7 +166,8 @@ public class Chef extends Persona{
         String msj = "";
         msj += "Chef: " +this.nombre +"\n";
         msj += String.format("Ganancias: %.3f", this.ganancias) + "\n";
-        msj += "Cuchillo ahorra: " +this.cuchillo.corta()+ " seg\n";
+        msj += "Cuchillo de " +this.cuchillo.material();
+        msj += " ahorra: " +this.cuchillo.corta()+ " seg\n";
         msj += "Inventario:" +"\n";
         StringBuilder concat = new StringBuilder();
         for (Map.Entry<String, ProductoInventario> set : this.productos.entrySet()) {
@@ -185,6 +199,6 @@ public class Chef extends Persona{
 
     /* Reporta al usurio el estado del chef. */
     private void reporte(String msj){
-        this.logger.info(msj);
+        System.out.println(msj);
     }
 }

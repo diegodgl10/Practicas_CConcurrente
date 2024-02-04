@@ -9,6 +9,8 @@ public class CuchilloMadera implements Cuchillo{
 
     // Nivel de corte (segundos que ahorra al utilizar el uchillo de madera).
     private Integer corte = 0;
+    // Material del cuchillo
+    private String material = "Madera";
 
     /**
      * Regresa el valor de tiempo que reduce el Chef
@@ -18,7 +20,15 @@ public class CuchilloMadera implements Cuchillo{
      */
     @Override
     public Integer corta() {
-        return corte;
+        return this.corte;
     }
     
+    /**
+     * Regresa el material del que esta formado.
+     * @return el material del que esta formado.
+     */
+    @Override
+    public String material() {
+        return this.material;
+    }
 }

@@ -31,7 +31,7 @@ public class PlatilloEconomicoFactory implements PlatilloFactory {
      * @return un platillo economico.
      */
     @Override
-    public Platillo creaProducto() {
+    public Platillo creaPlatillo() {
         int i = random.nextInt(4);
         return platillos[i];
     }
