@@ -112,15 +112,13 @@ public class Main {
         String msj = "";
         
         msj = chef.toString();
-        System.out.println(msj);
-        //logger.info(msj);
+        logger.info(msj);
         
         clientes = generarClientela();
         
         iniciarServicio();
         
         msj = chef.toString();
-        System.out.println(msj);
-        //logger.info(msj);
+        logger.info(msj);
     }
 }

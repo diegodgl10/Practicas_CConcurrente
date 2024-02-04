@@ -10,6 +10,10 @@ while getopts ":pc" opt; do
       echo "Archivo compilado"
       mvn compile -f "pom.xml"
       ;;
+    e)
+      echo "Archivo en ejecucion"
+      java -jar target/cafeteria-1.0-SNAPSHOT.jar
+      ;;
     \?)
       echo "Opción inválida: -$OPTARG"
       ;;

@@ -1,6 +1,5 @@
 package kass.concurrente.modelo.persona;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,7 +92,6 @@ public class Chef extends Persona{
      * @param platillo el platillo que debe cocinar.
      */
     public void cocinar(Platillo platillo){
-        verificaInventario(platillo);
         Integer tPreparacion = platillo.getTiempoCoccion();
         tPreparacion -= this.cuchillo.corta();
         try{
@@ -103,10 +101,11 @@ public class Chef extends Persona{
             Thread.currentThread().interrupt();
         }
         for (Producto pRequerido : platillo.getProductosRequeridos()) {
-            ProductoInventario p = this.productos.get(pRequerido.getNombre());
-            p.setCantidad(p.getCantidad()-1);
-            this.productos.put(p.getNombre(), p);
-            this.ganancias += p.getPrecio();
+            verificarProducto(pRequerido);
+            ProductoInventario pInv = this.productos.get(pRequerido.getNombre());
+            pInv.setCantidad(pInv.getCantidad()-1);
+            this.productos.put(pRequerido.getNombre(), pInv);
+            this.ganancias += pRequerido.getPrecio();
         }
         this.ganancias += platillo.getPrecio();
         reporte("Le tomo " +tPreparacion+ " seg prepararlo");
@@ -118,9 +117,7 @@ public class Chef extends Persona{
      * @param producto el producto que se vendera.
      */
     public void vender(Producto producto){
-        if (this.productos.get(producto.getNombre()).getCantidad() <= 0){
-            recogeProducto(producto);
-        }
+        verificarProducto(producto);
         ProductoInventario p = this.productos.get(producto.getNombre());
         p.setCantidad(p.getCantidad()-1);
         this.productos.put(p.getNombre(), p);
@@ -166,11 +163,13 @@ public class Chef extends Persona{
         return msj + concat;
     }
 
-    /**
-     * Surte el inventario del chef con el producto faltante.
-     * Solo puede ir por un tipo de producto a la vez.
+    /* Verifica que el chef posea los ingredientes necesarios,
+     * en otro caso va por ellos.
      */
-    private void recogeProducto(Producto producto){
+    private void verificarProducto(Producto producto){
+        if (this.productos.get(producto.getNombre()).getCantidad() > 0){
+            return;
+        }
         try{
             reporte("El cocinero fue por 2 unidades de " + producto.getNombre());
             Thread.sleep(1000);
@@ -178,35 +177,14 @@ public class Chef extends Persona{
             Thread.currentThread().interrupt();
         }
         reporte("El cocinero ya regreso con 2 unidades de " + producto.getNombre());
+        reporte("Le tomo 1 SEG ir por " +producto.getNombre()+ "\n");
         ProductoInventario pInv = this.productos.get(producto.getNombre());
         pInv.setCantidad(2);
-        this.productos.put(pInv.getNombre(), pInv);
-        reporte("Le tomo 1 seg ir por " +producto.getNombre()+ "\n");
-    }
-
-    /**
-     * Verifica si el chef tiene lo necesario para cocinar,
-     * si no es asi, va por ingredientes.
-     */
-    private void verificaInventario(Platillo platillo){
-        List<Producto> porSurtir = new ArrayList<>();
-        for (Map.Entry<String, ProductoInventario> set : this.productos.entrySet()) {
-            ProductoInventario pInv = set.getValue();
-            if (pInv.getCantidad() <= 0 &&
-                platillo.getProductosRequeridos().contains(pInv)){
-                porSurtir.add(pInv);
-            }
-        }
-
-
-        for (Producto pFaltante : porSurtir) {
-            recogeProducto(pFaltante);
-        }
+        this.productos.put(producto.getNombre(), pInv);
     }
 
     /* Reporta al usurio el estado del chef. */
     private void reporte(String msj){
-        //this.logger.info(msj);
-        System.out.println(msj);
+        this.logger.info(msj);
     }
 }
