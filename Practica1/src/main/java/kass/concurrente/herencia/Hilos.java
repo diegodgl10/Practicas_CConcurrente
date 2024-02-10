@@ -9,20 +9,20 @@ import java.util.List;
  * @version 1.1
  */
 public class Hilos extends Thread {
-    // Lista de hilos
-    static List<Thread> lHilos = new ArrayList<>();
+    public static final Integer HILOS = 3;
 
     // Metodo run de la clase Thread
     @Override
     public void run() {
-        System.out.println("Hola soy el: "+ Thread.currentThread().getName());
+        System.out.println("Hola soy el hilo: "+ Thread.currentThread().getName());
     }
 
     public static void main(String[] args) throws InterruptedException {
-        int nHilos = 10;
         Hilos h = new Hilos();
+        Integer tHilos = 10;
+        List<Thread> lHilos = new ArrayList<>();
         Thread thread;
-        for (int i = 0; i < nHilos; i++){
+        for (int i = 0; i < tHilos; i++){
             thread = new Thread(h, Integer.toString(i));
             lHilos.add(thread);   
         }

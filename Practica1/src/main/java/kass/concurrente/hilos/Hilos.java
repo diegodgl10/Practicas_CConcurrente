@@ -27,5 +27,20 @@ public class Hilos implements Runnable {
         t1.start();t2.start();t3.start();t4.start(); //Se inicializan los hilos para comenzar su ejecucion
 
         t1.join();t2.join();t3.join();t4.join();//????
+
+        // Mi codigo
+        Integer tHilos = 10;
+        List<Thread> lHilos = new ArrayList<>();
+        Thread thread;
+        for (int i = 0; i < tHilos; i++){
+            thread = new Thread(h, Integer.toString(i));
+            lHilos.add(thread);   
+        }
+        for (Thread t : lHilos) {
+            t.start();
+        }
+        for (Thread t : lHilos) {
+            t.join();
+        }
     }
 }
