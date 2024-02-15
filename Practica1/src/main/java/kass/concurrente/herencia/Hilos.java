@@ -37,13 +37,10 @@ public class Hilos extends Thread {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Hilos h = new Hilos();
         List<Thread> lHilos = new ArrayList<>();
-        Thread thread;
         System.out.println("Contador: " + Integer.toString(contador));
         for (int i = 0; i < HILOS; i++){
-            thread = new Thread(h, Integer.toString(i));
-            lHilos.add(thread);   
+            lHilos.add(new Hilos());   
         }
         for (Thread t : lHilos) {
             t.start();
