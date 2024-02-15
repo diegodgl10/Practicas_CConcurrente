@@ -14,10 +14,16 @@ import java.util.concurrent.ExecutionException;
  * @version 1.0
  */
 public class ContadorC implements Callable<Integer> {
+    // Contador de la operacion.
     public static Integer contador = 0;
+    // Numero total de rondas.
     public static final Integer RONDAS = 10000;//Cambiar esta variable para jugar con los valores. USar Thread Sleep
+    // Numero total de hilos.
     public static final Integer HILOS = 4;
 
+    /**
+     * Metodo call de la interfaz Callable.
+     */
     @Override
     public Integer call() throws Exception {//Esta metodo se implementa, retornamos el valor del Generico
         System.out.println("INCIO CALL");

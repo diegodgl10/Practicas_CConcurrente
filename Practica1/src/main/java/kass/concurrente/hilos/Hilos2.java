@@ -7,6 +7,9 @@ package kass.concurrente.hilos;
  */
 public class Hilos2 {
     
+    /**
+     * Metodo para imprimir algo.
+     */
     public void imprimeAlgo(){ //Metodazo que hara algo con estilo B)
         System.out.println("Imprimiendo con Estilo xD");
     }

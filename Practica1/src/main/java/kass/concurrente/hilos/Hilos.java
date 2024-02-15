@@ -3,8 +3,14 @@ package kass.concurrente.hilos;
 import java.util.ArrayList; 
 import java.util.List;
 
+/**
+ * Clase Hilo que implementa la interfaz Runnable.
+ */
 public class Hilos implements Runnable {
     
+    /**
+     * Metodo run de la interfaz Runnable.
+     */
     @Override
     public void run() { //Sobrescribimos el metodo run
         int a = 10;

@@ -1,7 +1,12 @@
 package kass.concurrente.contador;
 
+/**
+ * Clase Contador que implementa la clase Runnable.
+ */
 public class ContadorS implements Runnable {
+    // Numero total de rondas a realizar.
     private static final int RONDAS = 10000;
+    // Valor obtenido de la operacion.
     private int valor;
 
     /** Metodo constructor. */
@@ -25,24 +30,36 @@ public class ContadorS implements Runnable {
         this.valor = valor;
     }
 
+    /**
+     * Metodo run de la interfaz Runnable.
+     */
     @Override
     public void run() {
         suma();
     }
 
+    /**
+     * Metodo que realiza la suma.
+     */
+    /*
     public synchronized void suma(){
         for(int i = 0; i < RONDAS; ++i){
             valor = valor + 1;
         }
     }
+    */
 
-/*     public void suma(){
+    /**
+     * Metodo que realiza la suma,
+     * haciendo uso de syncronized para realizar la suma.
+     */
+    public void suma(){
         synchronized(this){
             for(int i = 0; i < RONDAS; ++i){
                 valor = valor + 1;
             }
         }
-    } */
+    }
 
     public static void main(String[] args) throws InterruptedException {
         ContadorS c = new ContadorS();

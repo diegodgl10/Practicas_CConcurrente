@@ -9,20 +9,39 @@ import java.util.List;
  * @version 1.1
  */
 public class Hilos extends Thread {
-    public static final Integer HILOS = 3;
+    // Numero de hilos.
+    public static final Integer HILOS = 10;
+    // Contador de la operacion.
+    public static Integer contador = 0;
+    // Numero total de rondas.
+    public static final Integer RONDAS = 10000;
 
-    // Metodo run de la clase Thread
+    /**
+     * Metodo run de la clase Thread.
+     */
     @Override
     public void run() {
         System.out.println("Hola soy el hilo: "+ Thread.currentThread().getName());
+        synchronized(this){
+            for(int i = 0; i< RONDAS; ++i){
+                contador++;
+            }
+        }
+        /*
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        */
     }
 
     public static void main(String[] args) throws InterruptedException {
         Hilos h = new Hilos();
-        Integer tHilos = 10;
         List<Thread> lHilos = new ArrayList<>();
         Thread thread;
-        for (int i = 0; i < tHilos; i++){
+        System.out.println("Contador: " + Integer.toString(contador));
+        for (int i = 0; i < HILOS; i++){
             thread = new Thread(h, Integer.toString(i));
             lHilos.add(thread);   
         }
@@ -32,5 +51,6 @@ public class Hilos extends Thread {
         for (Thread t : lHilos) {
             t.join();
         }
+        System.out.println("Contador: " + Integer.toString(contador));
     }
 }
